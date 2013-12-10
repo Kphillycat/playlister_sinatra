@@ -1,8 +1,8 @@
-require 'bundle'
+require 'bundler'
 require './lib/playlister'
 Bundler.require
 
-module playlist
+module Playlist
 	class App < Sinatra::Application
 		get '/' do
 			

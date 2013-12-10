@@ -76,7 +76,14 @@ class Playlister
 		end
 		artist_object_hash
 	end
+	#for sinatra
+	def all_artists
+		Artist.all
+	end
 
+	def all_genres
+		Genre.all
+	end
 
 
 	#Play game
@@ -159,9 +166,11 @@ class Playlister
 		#Parsing and object data structure complete
 	end
 
-	# puts "Welcome to the playlister app."
-	# puts "Would you like to Browse by artist or genre?"
-	# user_choice = gets.chomp.downcase
-	# display_artists(artist_objects_hash) if user_choice == "artist"
-	# display_genre(genre_objects_hash) if user_choice == "genre"
+	def play 
+		puts "Welcome to the playlister app."
+		puts "Would you like to Browse by artist or genre?"
+		user_choice = gets.chomp.downcase
+		display_artists(artist_objects_hash) if user_choice == "artist"
+		display_genre(genre_objects_hash) if user_choice == "genre"
+	end
 end

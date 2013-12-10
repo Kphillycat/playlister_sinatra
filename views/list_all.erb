@@ -1,3 +1,4 @@
-<% if params[:choice] == "Artist" %>
-<% advanced_partial :artists, @playlister.artist_objects_hash %>
+<% if params[:choice] == "artist" %>
+<%= adv_partial :artists, @playlister.all_artists %>
 <% else %>
+<% end %>
