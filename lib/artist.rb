@@ -1,49 +1,59 @@
-require 'debugger'
-
 class Artist
-	attr_accessor :songs, :genres
-	ALL = []
+	attr_accessor :name, :songs
+	ARTISTS = Array.new
 
 	def initialize
-		@name
+		ARTISTS << self
 		@songs = []
-		@genres = []
-		ALL << self
-	end
-
-	#add name= to check not to create new object for same artist
-
-	def name=(name)
-		@name = name 
-	end
-
-	def name
-		@name
-	end
-
-	def songs_count
-		songs.size
-	end
-
-	def add_song(new_song)
-		if new_song.genre
-			new_song.genre.artists << self 
-			genres << new_song.genre
-			new_song.genre.artists.uniq!
-		end
-		songs << new_song
-		
-	end
-
-	def self.reset_artists
-		ALL.clear
 	end
 
 	def self.count
-		ALL.size
+		ARTISTS.count
+	end
+
+	def self.reset_artists
+		ARTISTS.clear
 	end
 
 	def self.all
-		ALL
+		ARTISTS
 	end
+
+	def songs_count
+		songs.count
+	end
+
+	def add_song(song)
+		songs << song
+		song.artist = self
+	end
+
+	def genres
+		songs.collect {|song| song.genre}.uniq
+	end
+
+	def self.check_for_artist(artist_name)
+		ARTISTS.detect {|artist| artist.name == artist_name}
+	end
+
+	def self.list
+		ARTISTS.each_with_index do |artist, index|
+			puts "#{index+1}. #{artist.name} - #{artist.songs_count} songs"
+		end
+		puts "There are #{ARTISTS.count} artists in our playlist."
+	end
+
+	def self.artist_page(user_choice)
+		ARTISTS.each do |artist|
+			if artist.name == user_choice
+				puts " #{artist.name} - #{artist.songs_count} songs"
+				artist.songs.each_with_index do |song,index|
+					puts " #{index+1}. #{song.name} - #{song.genre.name.capitalize}"
+				end
+			end
+		end
+	end
+
+
 end
+

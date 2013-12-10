@@ -9,7 +9,7 @@ module Playlist
 		end
 
 		get '/:choice' do
-			@playlister = Playlister.new
+			@playlister = Parser.new("../data")
 			erb :list_all
 		end
 	

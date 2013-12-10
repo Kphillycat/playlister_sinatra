@@ -1,17 +1,12 @@
 class Song
-	attr_accessor :name
+	attr_accessor :genre, :artist, :name
 
-	def initialize
-		@name
-		@genre
+	def genre=(genre)
+		@genre = genre
+		genre.songs << self
 	end
 
-	def genre=(new_genre)
-		@genre = new_genre		
-		new_genre.songs << self		
+	def self.song_page(user_choice)
 	end
 
-	def genre
-		@genre
-	end
 end
