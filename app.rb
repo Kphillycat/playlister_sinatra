@@ -1,5 +1,5 @@
 require 'bundler'
-require './lib/playlister'
+require './lib/parser.rb'
 Bundler.require
 
 module Playlist
@@ -9,7 +9,7 @@ module Playlist
 		end
 
 		get '/:choice' do
-			@playlister = Parser.new("../data")
+			@playlister = Parser.new("./data")
 			erb :list_all
 		end
 	

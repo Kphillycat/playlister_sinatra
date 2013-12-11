@@ -1,3 +1,6 @@
-<!-- ####Folk    
-#####1. M83 - Midnight City  
-#####2. Lady Gaga - Pokerface -->
+
+<h4> <%= genres.name %> </h4>
+<ol> <% genres.songs.each do |song| %>
+	<li> <%= song.name %> </li>
+	<% end %>
+</ol>

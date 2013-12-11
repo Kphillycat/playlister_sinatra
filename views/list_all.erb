@@ -1,4 +1,5 @@
 <% if params[:choice] == "artist" %>
 <%= adv_partial :artists, @playlister.all_artists %>
-<% else %>
+<% elsif params[:choice] == "genre" %>
+<%= adv_partial :genres, @playlister.all_genres %>
 <% end %>
