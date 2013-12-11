@@ -1,5 +1,7 @@
 require 'bundler'
 require './lib/parser.rb'
+require 'open-uri'
+require 'JSON'
 Bundler.require
 
 module Playlist
@@ -28,6 +30,9 @@ module Playlist
 		get '/song/:name' do
 			@playlister = Parser.new("./data")
 			@song = @playlister.find_song(params[:name])
+			@download = open("http://ws.spotify.com/search/1/track.json?q=#{@song.name}").read
+			@html = JSON.parse(@download)
+			@spotify_url = @html["tracks"][0]["href"]
 			erb :song
 		end
 
