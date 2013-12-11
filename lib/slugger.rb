@@ -1,4 +1,4 @@
-Module slugger
+Module Slugger
 	def slug
 		slugged_name = self.name
 		replacements = [[" ","_"], [".","#"]]

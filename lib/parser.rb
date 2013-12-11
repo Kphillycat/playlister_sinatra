@@ -24,9 +24,24 @@ class Parser
 	def all_genres
 		Genre.all
 	end
+	def all_songs
+		Song.all
+	end
 
 	def find_artist(name)
 		Artist.check_for_artist(name)
+	end
+
+	def find_genre(name)
+		Genre.check_for_genre(name)
+	end
+
+		def find_song(name)
+		Song.check_for_song(name)
+	end
+
+	def to_link(name)
+		name.gsub
 	end
 end
 

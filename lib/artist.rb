@@ -1,3 +1,5 @@
+require './slugger'
+
 class Artist
 	attr_accessor :name, :songs
 	ARTISTS = Array.new

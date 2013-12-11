@@ -2,4 +2,6 @@
 <%= adv_partial :artists, @playlister.all_artists %>
 <% elsif params[:choice] == "genre" %>
 <%= adv_partial :genres, @playlister.all_genres %>
+<% elsif params[:choice] == "song" %>
+<%= adv_partial :songs, @playlister.all_songs %>
 <% end %>

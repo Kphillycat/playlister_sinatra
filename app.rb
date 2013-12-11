@@ -15,14 +15,22 @@ module Playlist
 
 		get '/artist/:name' do
 			@playlister = Parser.new("./data")
+			@artist = @playlister.find_artist(params[:name])
 			erb :artist
 		end
 
 		get '/genre/:name' do
 			@playlister = Parser.new("./data")
+			@genre = @playlister.find_genre(params[:name])
 			erb :genre
 		end
-	
+
+		get '/song/:name' do
+			@playlister = Parser.new("./data")
+			@song = @playlister.find_song(params[:name])
+			erb :song
+		end
+
 		helpers do
 			def intermediate_partial(template, locals=nil)
 	          locals = locals.is_a?(Hash) ? locals : {template.to_sym => locals}
