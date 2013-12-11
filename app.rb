@@ -12,6 +12,16 @@ module Playlist
 			@playlister = Parser.new("./data")
 			erb :list_all
 		end
+
+		get '/artist/:name' do
+			@playlister = Parser.new("./data")
+			erb :artist
+		end
+
+		get '/genre/:name' do
+			@playlister = Parser.new("./data")
+			erb :genre
+		end
 	
 		helpers do
 			def intermediate_partial(template, locals=nil)

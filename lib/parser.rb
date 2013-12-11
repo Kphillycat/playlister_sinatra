@@ -24,5 +24,9 @@ class Parser
 	def all_genres
 		Genre.all
 	end
+
+	def find_artist(name)
+		Artist.check_for_artist(name)
+	end
 end
 
