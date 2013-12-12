@@ -7,7 +7,7 @@ Bundler.require
 module Playlist
 	class App < Sinatra::Application
 		get '/' do
-			
+			Hello
 		end
 
 		get '/:choice' do
