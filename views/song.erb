@@ -1,2 +1,4 @@
 <h3><%= @song.name %> - <a href="/artist/<%= @song.artist.name %>"><%= @song.artist.name %></a> [<a href="/genre/<%=@song.genre.name%>"><%= @song.genre.name.capitalize%></a>]</h3>
+<% unless @html["info"]["num_results"] == 0%>
 <iframe src="https://embed.spotify.com/?uri=<%=@spotify_url%>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+<% end %>
