@@ -1,6 +1,7 @@
 require './lib/artist'
 require './lib/song'
 require './lib/genre'
+require 'json'
 
 class Parser 
 
