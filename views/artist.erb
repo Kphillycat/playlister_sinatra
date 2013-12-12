@@ -1,3 +1,4 @@
+<h1><%= @artist.count %></h1>
 <h1><%= @artist.name %> - <%= @artist.songs.count %> song(s)</h1>
 <ol><% @artist.songs.each do |song| %>
 	<li><a href="/song/<%= song.name%>"><%= song.name %></a> - <a href="/genre/<%= song.genre.name %>"><%=song.genre.name %></a></li>
