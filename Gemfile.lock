@@ -2,6 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     bond (0.4.3)
+    json (1.8.1)
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
@@ -32,6 +33,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  json
   shotgun
   sinatra
   tux
