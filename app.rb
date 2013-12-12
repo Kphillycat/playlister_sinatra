@@ -1,7 +1,7 @@
 require 'bundler'
 require './lib/parser.rb'
 require 'open-uri'
-require 'JSON'
+require 'json'
 Bundler.require
 
 module Playlist
