@@ -30,13 +30,18 @@ module Playlist
 		get '/song/:name' do
 			@playlister = Parser.new("./data")
 			@song = @playlister.find_song(params[:name])
-			@download = open("http://ws.spotify.com/search/1/track.json?q=#{URI::encode(@song.name)}")
-			if @download.class == Tempfile
-				@html = JSON.parse(@download.read)
-				@spotify_url = @html["tracks"][0]["href"]
-			else
+			@download = open("http://ws.spotify.com/search/1/track.json?q=#{URI::encode(@song.name + " " +@song.artist.name)}")
+			@html = JSON.parse(@download.read)
+			# if @download.class == Tempfile || @download.class == StringIO
+			# 	@html = JSON.parse(@download.read)
+			if @html["info"]["num_results"] == 0
 				@html = nil
-			end
+			else
+			 	@spotify_url = @html["tracks"][0]["href"]
+			 end
+			# else
+			# 	@html = nil
+			# end
 			erb :song
 		end
 
