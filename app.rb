@@ -6,34 +6,28 @@ Bundler.require
 
 module Playlist
 	class App < Sinatra::Application
-		before do
-			Song::ALL.clear
-		end
+		Parser.new("./data")
 
 		get '/' do
 			erb :index
 		end
 
 		get '/:choice' do
-			@playlister = Parser.new("./data")
 			erb :list_all
 		end
 
 		get '/artist/:name' do
-			@playlister = Parser.new("./data")
-			@artist = @playlister.find_artist(params[:name])
+			@artist = Artist.check_for_artist(params[:name])
 			erb :artist
 		end
 
 		get '/genre/:name' do
-			@playlister = Parser.new("./data")
-			@genre = @playlister.find_genre(params[:name])
+			@genre = Genre.check_for_genre(params[:name])
 			erb :genre
 		end
 
 		get '/song/:name' do
-			@playlister = Parser.new("./data")
-			@song = @playlister.find_song(params[:name])
+			@song = Song.check_for_song(params[:name])
 			@download = open("http://ws.spotify.com/search/1/track.json?q=#{URI::encode(@song.name + " " +@song.artist.name)}")
 			@html = JSON.parse(@download.read)
 			if @html["info"]["num_results"] == 0
