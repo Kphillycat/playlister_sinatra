@@ -35,7 +35,7 @@ module Playlist
 			else
 			 	@spotify_url = @html["tracks"][0]["href"]
 			end
-			@echo_key = YAML::load_file("data/keys.yml")
+			# @echo_key = YAML::load_file("more_data/keys.yml")
 			erb :song
 		end
 
