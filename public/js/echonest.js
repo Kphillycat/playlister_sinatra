@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(".artist-news").append("<p>News go here</p>");
+  // $(".artist-news").append("<p>News go here</p>");
   var artist = $(".artist-name").attr("id");
   var url = 'http://developer.echonest.com/api/v4/artist/news';
  
@@ -12,14 +12,7 @@ $(document).ready(function(){
             high_relevance: true, 
     }; 
 
-    // $.ajax({
-    //   url: url,
-    //   data: data,
-    //   success: success,
-    //   dataType: dataType
-    // });
-
- $.get('http://developer.echonest.com/api/v4/artist/news', args, 
+ $.get(url, args, 
                     function(data) {
                       console.log("makin' request");
                       console.log(data);
@@ -64,11 +57,15 @@ $(document).ready(function(){
     div.append($("<p>").html(date + news.summary + " ..." ));
     var link = $("<a>");
     link.attr('href', news.url);
-    // link.text("full story on " + getSource(news.url));
+    link.text("Read more here: " + getSource(news.url));
     div.append(link);
     return div;
   }
 
+  function getSource(url) {
+    var path = url.split('/');
+    return path[2]  ;
+  }
  // $.getJSON(url, args, {crossDomain: true},
  //            function(data) {
  //              console.log("makin' request");
