@@ -1,7 +1,10 @@
-<h1><%= @artist.name %> - <%= @artist.songs.count %> song(s)</h1>
+<h1 id=<%= @artist.name %> class="artist-name"><%= @artist.name %> - <%= @artist.songs.count %> song(s)</h1>
 <ol><% @artist.songs.each do |song| %>
 	<li><a href="/song/<%= song.name%>"><%= song.name %></a> - <a href="/genre/<%= song.genre.name %>"><%=song.genre.name %></a></li>
 	<% end %>
 </ol>
 
-<div class="artist-news"></div>
+<div class="artist-news"><h2>Much NEWS!</h2></div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="/js/echonest.js" type="text/javascript"></script>
